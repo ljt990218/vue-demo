@@ -31,13 +31,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
           target: 'https://dev.178778.xyz',
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/api/, ''),
-          secure: false, // 如果是 https 接口，需要配置这个参数
-          ws: true, // 是否启用 websocket
-          headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-            'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With'
-          }
+          secure: true,
         }
       }
     },

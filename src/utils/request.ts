@@ -3,9 +3,6 @@ import axios from "axios"
 import { showConfirmDialog, closeToast, showToast } from 'vant'
 import router from '@/router'
 
-export const REQUEST_TOKEN_KEY = 'XSRF-TOKEN'
-const STORAGE_TOKEN_KEY = 'XSRF-TOKEN'
-
 // 定义 API 响应的接口
 interface ApiResponse<T> {
   code: number
@@ -18,25 +15,10 @@ const request = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL,
   timeout: 6000,
   withCredentials: true,
-  headers: {
-    'Content-Type': 'application/json',
-    'X-Requested-With': 'XMLHttpRequest',
-    'Accept': 'application/json'
-  }
 })
 
 // 请求拦截器
 function requestHandler(config: InternalAxiosRequestConfig): InternalAxiosRequestConfig | Promise<InternalAxiosRequestConfig> {
-
-  // console.log(Cookies.get());
-
-  // const savedToken = Cookies.get(STORAGE_TOKEN_KEY)
-
-  // // 如果 token 存在
-  // if (savedToken) {
-  //   config.headers[REQUEST_TOKEN_KEY] = savedToken
-  // }
-
   return config
 }
 
